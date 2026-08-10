@@ -140,3 +140,52 @@ app.add_handler(CallbackQueryHandler(admin_add, pattern="^admin_add$"))
 app.add_handler(MessageHandler(filters.TEXT, admin_add_handler))
 
 app.
+add_handler(CallbackQueryHandler(admin_remove, pattern="^admin_remove$"))
+app.add_handler(MessageHandler(filters.TEXT, admin_remove_handler))
+
+app.add_handler(CallbackQueryHandler(admin_force_join, pattern="^admin_force_join$"))
+app.add_handler(CallbackQueryHandler(force_on, pattern="^force_on$"))
+app.add_handler(CallbackQueryHandler(force_off, pattern="^force_off$"))
+app.add_handler(CallbackQueryHandler(force_set_channel, pattern="^force_set_channel$"))
+app.add_handler(MessageHandler(filters.TEXT, force_set_channel_handler))
+
+app.add_handler(CallbackQueryHandler(admin_texts, pattern="^admin_texts$"))
+app.add_handler(CallbackQueryHandler(text_edit, pattern="^text_edit_"))
+app.add_handler(MessageHandler(filters.TEXT, text_edit_handler))
+
+app.add_handler(CallbackQueryHandler(admin_buttons, pattern="^admin_buttons$"))
+app.add_handler(CallbackQueryHandler(btn_add, pattern="^btn_add$"))
+app.add_handler(MessageHandler(filters.TEXT, btn_add_handler))
+app.add_handler(CallbackQueryHandler(btn_remove, pattern="^btn_remove$"))
+app.add_handler(MessageHandler(filters.TEXT, btn_remove_handler))
+
+app.add_handler(CallbackQueryHandler(admin_courses, pattern="^admin_courses$"))
+app.add_handler(CallbackQueryHandler(course_add, pattern="^course_add$"))
+app.add_handler(MessageHandler(filters.TEXT, course_add_handler))
+app.add_handler(CallbackQueryHandler(course_remove, pattern="^course_remove$"))
+app.add_handler(MessageHandler(filters.TEXT, course_remove_handler))
+app.add_handler(CallbackQueryHandler(course_edit_title, pattern="^course_edit_title$"))
+app.add_handler(MessageHandler(filters.TEXT, course_edit_title_handler))
+
+app.add_handler(CallbackQueryHandler(admin_broadcast, pattern="^admin_broadcast$"))
+app.add_handler(MessageHandler(filters.TEXT, admin_broadcast_handler))
+
+app.add_handler(CallbackQueryHandler(admin_forward, pattern="^admin_forward$"))
+app.add_handler(MessageHandler(filters.ALL, admin_forward_handler))
+
+app.add_handler(CallbackQueryHandler(admin_auto_msg, pattern="^admin_auto_msg$"))
+app.add_handler(MessageHandler(filters.TEXT, admin_auto_msg_handler))
+
+app.add_handler(CallbackQueryHandler(admin_export, pattern="^admin_export$"))
+
+app.add_handler(CallbackQueryHandler(admin_ai, pattern="^admin_ai$"))
+app.add_handler(MessageHandler(filters.TEXT, admin_ai_handler))
+
+app.add_handler(CallbackQueryHandler(admin_help, pattern="^admin_help$"))
+
+
+# -----------------------------
+# اجرای ربات
+# -----------------------------
+app.run_polling()
+
