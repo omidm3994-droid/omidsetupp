@@ -1,4 +1,3 @@
-ᵒᵐᵢᵈ, [Aug 10, 2026 at 17:41]
 import os
 from telegram.ext import (
     Application,
