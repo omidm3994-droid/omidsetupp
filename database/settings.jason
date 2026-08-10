@@ -1,0 +1,11 @@
+{
+    "force_join": {
+        "enabled": false,
+        "channel": ""
+    },
+    "auto_message": {
+        "enabled": false,
+        "text": "",
+        "interval_minutes": 60
+    }
+}
