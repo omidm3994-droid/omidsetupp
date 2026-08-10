@@ -138,8 +138,7 @@ app.add_handler(CallbackQueryHandler(admin_manage_admins, pattern="^admin_manage
 app.add_handler(CallbackQueryHandler(admin_add, pattern="^admin_add$"))
 app.add_handler(MessageHandler(filters.TEXT, admin_add_handler))
 
-app.
-add_handler(CallbackQueryHandler(admin_remove, pattern="^admin_remove$"))
+app.add_handler(CallbackQueryHandler(admin_remove, pattern="^admin_remove$"))
 app.add_handler(MessageHandler(filters.TEXT, admin_remove_handler))
 
 app.add_handler(CallbackQueryHandler(admin_force_join, pattern="^admin_force_join$"))
@@ -187,4 +186,3 @@ app.add_handler(CallbackQueryHandler(admin_help, pattern="^admin_help$"))
 # اجرای ربات
 # -----------------------------
 app.run_polling()
-
