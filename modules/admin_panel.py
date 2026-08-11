@@ -94,8 +94,7 @@ async def admin_add(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = str(update.callback_query.from_user.id)
 
     if user_id != admins["main_admin"]:
-        await update.callback_query.message.
-      edit_text("❌ فقط ادمین اصلی می‌تواند ادمین اضافه کند.")
+        await update.callback_query.message.edit_text("❌ فقط ادمین اصلی می‌تواند ادمین اضافه کند.")
         return
 
     await update.callback_query.message.edit_text("شناسه کاربری فرد مورد نظر را ارسال کن:")
@@ -201,8 +200,7 @@ async def admin_texts(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     keyboard = []
     for key in texts.keys():
-        keyboard.
-      append([InlineKeyboardButton(key, callback_data=f"text_edit_{key}")])
+        keyboard.append([InlineKeyboardButton(key, callback_data=f"text_edit_{key}")])
 
     keyboard.append([InlineKeyboardButton("🔙 برگشت", callback_data="admin_panel")])
 
@@ -317,7 +315,7 @@ async def btn_remove_handler(update: Update, context: ContextTypes.DEFAULT_TYPE)
 # 7) مدیریت دوره‌ها
 # ---------------------------------------------------------
 async def admin_courses(update: Update, context: ContextTypes.DEFAULT_TYPE):
-  courses = load_json(COURSES_DB)
+    courses = load_json(COURSES_DB)
 
     keyboard = [
         [InlineKeyboardButton("➕ افزودن دوره", callback_data="course_add")],
@@ -431,7 +429,7 @@ async def admin_broadcast_handler(update: Update, context: ContextTypes.DEFAULT_
             try:
                 await context.bot.send_message(chat_id=uid, text=text)
             except:
-              pass
+                pass
 
         await update.message.reply_text("✔️ پیام همگانی ارسال شد.")
         context.user_data["broadcast_mode"] = False
@@ -476,7 +474,7 @@ async def admin_auto_msg_handler(update: Update, context: ContextTypes.DEFAULT_T
         await update.message.reply_text("زمان ارسال (به دقیقه) را ارسال کن:")
         return
 
-        if step == "time":
+    if step == "time":
         minutes = int(update.message.text)
         text = context.user_data["auto_msg_text"]
 
@@ -499,7 +497,7 @@ async def admin_export(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     cities = {}
     for uid, info in users.items():
-        city = info["city"]
+        city = info.get("city", "نامشخص")
         if city not in cities:
             cities[city] = []
         cities[city].append(uid)
@@ -546,7 +544,7 @@ async def admin_help(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "• عضویت اجباری: تعیین کانال\n"
         "• ممبرگیری: فعال‌سازی و تعیین نوع\n"
         "• مدیریت متن‌ها: تغییر متن‌های ربات\n"
-      "• مدیریت دکمه‌ها: افزودن/حذف دکمه\n"
+        "• مدیریت دکمه‌ها: افزودن/حذف دکمه\n"
         "• مدیریت دوره‌ها: افزودن/حذف/ویرایش دوره\n"
         "• قفل دوره‌ها: تعیین نوع قفل\n"
         "• ارسال همگانی: ارسال پیام به همه کاربران\n"
