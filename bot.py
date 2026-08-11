@@ -130,6 +130,7 @@ app.add_handler(CallbackQueryHandler(fish_no, pattern="^fish_no_"))
 # -----------------------------
 # پنل مدیریت
 # -----------------------------
+app.add_handler(CommandHandler("admin", admin_panel))
 app.add_handler(CallbackQueryHandler(admin_panel, pattern="^admin_panel$"))
 app.add_handler(CallbackQueryHandler(admin_stats, pattern="^admin_stats$"))
 app.add_handler(CallbackQueryHandler(admin_manage_admins, pattern="^admin_manage_admins$"))
