@@ -73,8 +73,7 @@ from modules.admin_panel import (
 # -----------------------------
 # توکن ربات
 # -----------------------------
-TOKEN = os.getenv("8743511615:AAEmKgkD2u8qamEVfJ4Weiw2ExkL6FpRB-I")
-
+TOKEN = os.getenv("BOT_TOKEN")
 app = Application.builder().token(TOKEN).build()
 
 
