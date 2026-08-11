@@ -78,10 +78,16 @@ app = Application.builder().token(TOKEN).build()
 
 
 # -----------------------------
+# پنل مدیریت (اولویت بالا)
+# -----------------------------
+app.add_handler(CommandHandler("admin", admin_panel))
+app.add_handler(CallbackQueryHandler(admin_panel, pattern="^admin_panel$"))
+
+# -----------------------------
 # هندلرهای ثبت‌نام
 # -----------------------------
 app.add_handler(CommandHandler("start", start_registration))
-app.add_handler(MessageHandler(filters.TEXT, registration_handler))
+app.add_handler(MessageHandler(filters.Regex("^reg_"), registration_handler))
 
 
 # -----------------------------
@@ -103,14 +109,14 @@ app.add_handler(CallbackQueryHandler(course_selected, pattern="^course_"))
 app.add_handler(CallbackQueryHandler(start_ai_chat, pattern="^ai$"))
 app.add_handler(CallbackQueryHandler(ai_text_handler, pattern="^ai_text$"))
 app.add_handler(CallbackQueryHandler(ai_image_handler, pattern="^ai_image$"))
-app.add_handler(MessageHandler(filters.TEXT, ai_message_handler))
+app.add_handler(MessageHandler(filters.Regex("^ai_"), ai_message_handler))
 
 
 # -----------------------------
 # ممبرگیری حرفه‌ای
 # -----------------------------
-app.add_handler(MessageHandler(filters.TEXT, check_referral))
 app.add_handler(CallbackQueryHandler(referral_menu, pattern="^referral$"))
+app.add_handler(MessageHandler(filters.Regex("^ref_"), check_referral))
 
 
 # -----------------------------
@@ -120,7 +126,7 @@ app.add_handler(CallbackQueryHandler(lock_course_menu, pattern="^lock_course$"))
 app.add_handler(CallbackQueryHandler(lock_type_menu, pattern="^lock_select_"))
 app.add_handler(CallbackQueryHandler(lock_referral, pattern="^lock_referral$"))
 app.add_handler(CallbackQueryHandler(lock_payment, pattern="^lock_payment$"))
-app.add_handler(MessageHandler(filters.TEXT, lock_value_handler))
+app.add_handler(MessageHandler(filters.Regex("^lock_"), lock_value_handler))
 
 app.add_handler(CallbackQueryHandler(receive_fish, pattern="^send_fish_"))
 app.add_handler(CallbackQueryHandler(fish_ok, pattern="^fish_ok_"))
@@ -128,56 +134,54 @@ app.add_handler(CallbackQueryHandler(fish_no, pattern="^fish_no_"))
 
 
 # -----------------------------
-# پنل مدیریت
+# پنل مدیریت — بخش‌های داخلی
 # -----------------------------
-app.add_handler(CommandHandler("admin", admin_panel))
-app.add_handler(CallbackQueryHandler(admin_panel, pattern="^admin_panel$"))
 app.add_handler(CallbackQueryHandler(admin_stats, pattern="^admin_stats$"))
 app.add_handler(CallbackQueryHandler(admin_manage_admins, pattern="^admin_manage_admins$"))
 
 app.add_handler(CallbackQueryHandler(admin_add, pattern="^admin_add$"))
-app.add_handler(MessageHandler(filters.TEXT, admin_add_handler))
+app.add_handler(MessageHandler(filters.Regex("^admin_add_"), admin_add_handler))
 
 app.add_handler(CallbackQueryHandler(admin_remove, pattern="^admin_remove$"))
-app.add_handler(MessageHandler(filters.TEXT, admin_remove_handler))
+app.add_handler(MessageHandler(filters.Regex("^admin_remove_"), admin_remove_handler))
 
 app.add_handler(CallbackQueryHandler(admin_force_join, pattern="^admin_force_join$"))
 app.add_handler(CallbackQueryHandler(force_on, pattern="^force_on$"))
 app.add_handler(CallbackQueryHandler(force_off, pattern="^force_off$"))
 app.add_handler(CallbackQueryHandler(force_set_channel, pattern="^force_set_channel$"))
-app.add_handler(MessageHandler(filters.TEXT, force_set_channel_handler))
+app.add_handler(MessageHandler(filters.Regex("^force_set_"), force_set_channel_handler))
 
 app.add_handler(CallbackQueryHandler(admin_texts, pattern="^admin_texts$"))
 app.add_handler(CallbackQueryHandler(text_edit, pattern="^text_edit_"))
-app.add_handler(MessageHandler(filters.TEXT, text_edit_handler))
+app.add_handler(MessageHandler(filters.Regex("^text_edit_"), text_edit_handler))
 
 app.add_handler(CallbackQueryHandler(admin_buttons, pattern="^admin_buttons$"))
 app.add_handler(CallbackQueryHandler(btn_add, pattern="^btn_add$"))
-app.add_handler(MessageHandler(filters.TEXT, btn_add_handler))
+app.add_handler(MessageHandler(filters.Regex("^btn_add_"), btn_add_handler))
 app.add_handler(CallbackQueryHandler(btn_remove, pattern="^btn_remove$"))
-app.add_handler(MessageHandler(filters.TEXT, btn_remove_handler))
+app.add_handler(MessageHandler(filters.Regex("^btn_remove_"), btn_remove_handler))
 
 app.add_handler(CallbackQueryHandler(admin_courses, pattern="^admin_courses$"))
 app.add_handler(CallbackQueryHandler(course_add, pattern="^course_add$"))
-app.add_handler(MessageHandler(filters.TEXT, course_add_handler))
+app.add_handler(MessageHandler(filters.Regex("^course_add_"), course_add_handler))
 app.add_handler(CallbackQueryHandler(course_remove, pattern="^course_remove$"))
-app.add_handler(MessageHandler(filters.TEXT, course_remove_handler))
+app.add_handler(MessageHandler(filters.Regex("^course_remove_"), course_remove_handler))
 app.add_handler(CallbackQueryHandler(course_edit_title, pattern="^course_edit_title$"))
-app.add_handler(MessageHandler(filters.TEXT, course_edit_title_handler))
+app.add_handler(MessageHandler(filters.Regex("^course_edit_title_"), course_edit_title_handler))
 
 app.add_handler(CallbackQueryHandler(admin_broadcast, pattern="^admin_broadcast$"))
-app.add_handler(MessageHandler(filters.TEXT, admin_broadcast_handler))
+app.add_handler(MessageHandler(filters.Regex("^broadcast_"), admin_broadcast_handler))
 
 app.add_handler(CallbackQueryHandler(admin_forward, pattern="^admin_forward$"))
 app.add_handler(MessageHandler(filters.ALL, admin_forward_handler))
 
 app.add_handler(CallbackQueryHandler(admin_auto_msg, pattern="^admin_auto_msg$"))
-app.add_handler(MessageHandler(filters.TEXT, admin_auto_msg_handler))
+app.add_handler(MessageHandler(filters.Regex("^auto_msg_"), admin_auto_msg_handler))
 
 app.add_handler(CallbackQueryHandler(admin_export, pattern="^admin_export$"))
 
 app.add_handler(CallbackQueryHandler(admin_ai, pattern="^admin_ai$"))
-app.add_handler(MessageHandler(filters.TEXT, admin_ai_handler))
+app.add_handler(MessageHandler(filters.Regex("^admin_ai_"), admin_ai_handler))
 
 app.add_handler(CallbackQueryHandler(admin_help, pattern="^admin_help$"))
 
