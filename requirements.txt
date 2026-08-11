@@ -1,4 +1,8 @@
-python-telegram-bot==21.6
+python-telegram-bot==20.7
+pillow
+requests
+python-dotenv
+openai
 google-generativeai
 google-genai
 requests
